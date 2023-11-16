@@ -1395,6 +1395,7 @@ shaka.extern.AbrConfiguration;
  * @typedef {{
  *   minTotalBytes: number,
  *   minBytes: number,
+ *   progressInterval: number,
  *   fastHalfLife: number,
  *   slowHalfLife: number
  * }}
@@ -1408,6 +1409,9 @@ shaka.extern.AbrConfiguration;
  *   first byte) is considered part of the download time.  Because of this, we
  *   should ignore very small downloads which would cause our estimate to be
  *   too low.
+ * @property {number} progressInterval
+ *   Minimum number of seconds to accumulate progress events from network layer
+ *   before pass them to the ABR.
  * @property {number} fastHalfLife
  *   The quantity of prior samples (by weight) used when creating a new
  *   estimate, in seconds.  Those prior samples make up half of the
