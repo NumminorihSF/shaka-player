@@ -3,6 +3,7 @@
 
 +../../lib/abr/ewma.js
 +../../lib/abr/ewma_bandwidth_estimator.js
++../../lib/abr/ewma_ttfb_estimator.js
 +../../lib/abr/progress_accumulator.js
 +../../lib/abr/simple_abr_manager.js
 

@@ -1322,6 +1322,7 @@ shaka.extern.AdsConfiguration;
  *   enabled: boolean,
  *   useNetworkInformation: boolean,
  *   defaultBandwidthEstimate: number,
+ *   defaultTtfbEstimate: number,
  *   restrictions: shaka.extern.Restrictions,
  *   switchInterval: number,
  *   bandwidthUpgradeTarget: number,
@@ -1342,6 +1343,9 @@ shaka.extern.AdsConfiguration;
  * @property {number} defaultBandwidthEstimate
  *   The default bandwidth estimate to use if there is not enough data, in
  *   bit/sec.
+ * @property {number} defaultTtfbEstimate
+ *   The default TTFB estimate to use if there is not enough data, in
+ *   milliseconds.
  * @property {shaka.extern.Restrictions} restrictions
  *   The restrictions to apply to ABR decisions.  These are "soft" restrictions.
  *   Any track that fails to meet these restrictions will not be selected
@@ -1396,6 +1400,9 @@ shaka.extern.AbrConfiguration;
  *   minTotalBytes: number,
  *   minBytes: number,
  *   progressInterval: number,
+ *   minTotalRequests: number,
+ *   fastTtfbHalfLife: number,
+ *   slowTtfbHalfLife: number,
  *   fastHalfLife: number,
  *   slowHalfLife: number
  * }}
@@ -1412,6 +1419,14 @@ shaka.extern.AbrConfiguration;
  * @property {number} progressInterval
  *   Minimum number of seconds to accumulate progress events from network layer
  *   before pass them to the ABR.
+ * @property {number} fastTtfbHalfLife
+ *   The quantity of prior samples (by weight) used when creating a new
+ *   ttfb estimate, in seconds.  Those prior samples make up half of the
+ *   new estimate.
+ * @property {number} slowTtfbHalfLife
+ *   The quantity of prior samples (by weight) used when creating a new
+ *   ttfb estimate, in seconds.  Those prior samples make up half of the
+ *   new estimate.
  * @property {number} fastHalfLife
  *   The quantity of prior samples (by weight) used when creating a new
  *   estimate, in seconds.  Those prior samples make up half of the

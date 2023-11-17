@@ -32,9 +32,10 @@ shaka.extern.AbrManager = class {
    * Initializes the AbrManager.
    *
    * @param {shaka.extern.AbrManager.SwitchCallback} switchCallback
+   * @param {shaka.extern.AbrManager.GetSegmentDuration} getSegmentDuration
    * @exportDoc
    */
-  init(switchCallback) {}
+  init(switchCallback, getSegmentDuration) {}
 
   /**
    * Stops any background timers and frees any objects held by this instance.
@@ -97,6 +98,14 @@ shaka.extern.AbrManager = class {
   segmentDownloaded(deltaTimeMs, numBytes, allowSwitch) {}
 
   /**
+   * Notifies the AbrManager that request generated the new ttfb sample
+   * @param {number} ttfbMs The duration, in milliseconds, that the request
+   *     took to receive headers.
+   * @exportDoc
+   */
+  sampleTtfb(ttfbMs) {}
+
+  /**
    * Gets an estimate of the current bandwidth in bit/sec.  This is used by the
    * Player to generate stats.
    *
@@ -154,6 +163,14 @@ shaka.extern.AbrManager = class {
  */
 shaka.extern.AbrManager.SwitchCallback;
 
+/**
+ * A callback into the Player that should return the segment's duration
+ * in seconds for passed variant.
+ *
+ * @typedef {function(shaka.extern.Variant)}
+ * @exportDoc
+ */
+shaka.extern.AbrManager.GetSegmentDuration;
 
 /**
  * A factory for creating the abr manager.

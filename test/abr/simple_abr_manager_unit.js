@@ -67,7 +67,8 @@ describe('SimpleAbrManager', () => {
     variants = manifest.variants;
 
     abrManager = new shaka.abr.SimpleAbrManager();
-    abrManager.init(shaka.test.Util.spyFunc(switchCallback));
+    abrManager.init(shaka.test.Util.spyFunc(switchCallback),
+        () => 0);
     abrManager.configure(config);
     abrManager.setVariants(variants);
   });
